@@ -30,7 +30,7 @@ The values **1cf1 (Vendor ID)** and **0030 (Product ID)** are required in the XM
 
 
 ### **2. Create an XML file for the USB device**
-Save the following file somewhere on your nas for example `/var/services/homes/$USERNAME/synology/usb_conbee/usb_conbee.xml`:
+Save the following file somewhere on your nas for example `/var/services/homes/ironbiff/synology/usb_conbee/usb_conbee.xml`:
 
 ```xml
 <hostdev mode='subsystem' type='usb'>
