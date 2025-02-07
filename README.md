@@ -80,17 +80,18 @@ Example output:
 
 
 ## Installation
-1. **Save the script** and
+1. **Save the script**
+   synology-vmm-remount-usb.sh somewhere on the NAS and
    change '$VENDOR_ID$' to your vendor ID
    change '$IVRSH_VM_NAME$' to your vm Name
    change path to your usb_whatever.xml
 
-2. **Make the script executable**
+3. **Make the script executable**
    ```bash
    chmod +x synology-vmm-remount_usb.sh
    ```
 
-3. **Set up automatic execution**
+4. **Set up automatic execution**
    To run the script regularly, add a cron job or create a task in synology DSM:
    
    ![synology_task-scheduler_task_00](images/synology_task-scheduler_task_00.png)
