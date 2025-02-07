@@ -29,7 +29,20 @@ This example is for the ConBee II Dongle
 The values **1cf1 (Vendor ID)** and **0030 (Product ID)** are required in the XML file.
 
 
-### **2. Find the VM name (UUID)**
+### **2. Create an XML file for the USB device**
+Save the following file somewhere on your nas for example `/var/services/homes/$USERNAME/synology/usb_conbee/usb_conbee.xml`:
+
+```xml
+<hostdev mode='subsystem' type='usb'>
+    <source>
+        <vendor id='0x1cf1'/>
+        <product id='0x0030'/>
+    </source>
+</hostdev>
+```
+
+
+### **3. Find the VM name (UUID)**
 To find the **UUID** or name of your VM, run:
 ```bash
 virsh list
@@ -43,7 +56,7 @@ Id   Name                                   State
  5    23986fab-7c4c-4c10-80e2-0fd7d0a55f4b   running
 ```
 
-### **3. Find the right UUID
+### **4. Find the right UUID**
 To find the right UUID, run this command with each of your VM UUIDs and use the one where you find the USB attached
 ```bash
 virsh dumpxml d25ac3aa-76ff-4bb8-972e-dee62d3f914d | grep -n5 "1cf1"
@@ -64,23 +77,12 @@ Example output:
 ```
 
 
-### **4. Create an XML file for the USB device**
-Save the following file somewhere on your nas for example `/var/services/homes/$USERNAME/synology/usb_conbee/usb_conbee.xml`:
-
-```xml
-<hostdev mode='subsystem' type='usb'>
-    <source>
-        <vendor id='0x1cf1'/>
-        <product id='0x0030'/>
-    </source>
-</hostdev>
-```
 
 
 ## Installation
 1. **Save the script**
-   change $VENDOR_ID$ to your vendor ID
-   change $IVRSH_VM_NAME$ to your vm Name
+   change '$VENDOR_ID$' to your vendor ID
+   change '$IVRSH_VM_NAME$' to your vm Name
    change path to your usb_whatever.xml
 
 2. **Make the script executable**
