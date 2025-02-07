@@ -80,7 +80,7 @@ Example output:
 
 
 ## Installation
-1. **Save the script**
+1. **Save the script** and
    change '$VENDOR_ID$' to your vendor ID
    change '$IVRSH_VM_NAME$' to your vm Name
    change path to your usb_whatever.xml
