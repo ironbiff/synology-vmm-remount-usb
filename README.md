@@ -93,6 +93,7 @@ Example output:
 3. **Set up automatic execution**
    To run the script regularly, add a cron job or create a task in synology DSM:
    
+   ![synology_task-scheduler_task_00](images/synology_task-scheduler_task_00.png)
    ![synology_task-scheduler_task_01](images/synology_task-scheduler_task_01.png)
    ![synology_task-scheduler_task_02](images/synology_task-scheduler_task_02.png)
    ![synology_task-scheduler_task_03](images/synology_task-scheduler_task_03.png)
