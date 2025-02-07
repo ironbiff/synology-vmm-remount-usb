@@ -11,21 +11,9 @@ This script checks whether a specific USB device (e.g., ConBee II) is attached t
 
   
 ## preparation
-### **1. Find the VM name (UUID)**
-To find the **UUID** or name of your VM, run:
-```bash
-virsh list
-```
-Example output:
-```
-Id   Name                                   State
-------------------------------------------------------
- 3    b298aa9a-dc43-4ae9-a507-b1333d234705   running
- 4    d25ac3aa-76ff-4bb8-972e-dee62d3f914d   running
- 5    23986fab-7c4c-4c10-80e2-0fd7d0a55f4b   running
-```
 
-### **2. Find the USB Vendor ID and Product ID**
+
+### **1. Find the USB Vendor ID and Product ID**
 Run the following command on the Synology SSH console:
 ```bash
 lsusb
@@ -40,7 +28,43 @@ Example output:
 This example is for the ConBee II Dongle
 The values **1cf1 (Vendor ID)** and **0030 (Product ID)** are required in the XML file.
 
-### **3. Create an XML file for the USB device**
+
+### **2. Find the VM name (UUID)**
+To find the **UUID** or name of your VM, run:
+```bash
+virsh list
+```
+Example output:
+```
+Id   Name                                   State
+------------------------------------------------------
+ 3    b298aa9a-dc43-4ae9-a507-b1333d234705   running
+ 4    d25ac3aa-76ff-4bb8-972e-dee62d3f914d   running
+ 5    23986fab-7c4c-4c10-80e2-0fd7d0a55f4b   running
+```
+
+### **3. Find the right UUID
+To find the right UUID, run this command with each of your VM UUIDs and use the one where you find the USB attached
+```bash
+virsh dumpxml d25ac3aa-76ff-4bb8-972e-dee62d3f914d | grep -n5 "1cf1"
+```
+Example output:
+```
+298-      <alias name='video0'/>
+299-      <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x0'/>
+300-    </video>
+301-    <hostdev mode='subsystem' type='usb' managed='no'>
+302-      <source>
+303:        <vendor id='0x1cf1'/>
+304-        <product id='0x0030'/>
+305-        <address bus='1' device='70'/>
+306-      </source>
+307-      <alias name='hostdev0'/>
+308-      <address type='usb' bus='0' port='2'/>
+```
+
+
+### **4. Create an XML file for the USB device**
 Save the following file somewhere on your nas for example `/var/services/homes/$USERNAME/synology/usb_conbee/usb_conbee.xml`:
 
 ```xml
