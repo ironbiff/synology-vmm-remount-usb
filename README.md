@@ -100,6 +100,3 @@ Example output:
    ![synology_task-scheduler_task_03](images/synology_task-scheduler_task_03.png)
 
 
-## License
-MIT License
-
